@@ -1,0 +1,57 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "echo",
+            "type": "shell",
+            "command": "echo Hello"
+        },
+        {
+            "label": "Build docker-compose",
+            "type": "shell",
+            "command": "docker-compose build",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Stop docker-compose",
+            "type": "shell",
+            "command": "docker-compose stop",
+            "problemMatcher": []
+        },
+        {
+            "label": "Start docker-compose",
+            "type": "shell",
+            "command": "docker-compose start",
+            "dependsOn":"${defaultBuildTask}",
+            "problemMatcher": [
+                {
+                    "owner": "shell",
+                    "fileLocation": [
+                        "relative",
+                        "${workspaceFolder}"
+                    ],
+                    "pattern": [
+                        {
+                            "regexp": "^([^\\s].*)$",
+                            "file": 1
+                        },
+                        {
+                            "regexp": "^\\s+(\\d+):(\\d+)\\s+(error|warning|info)\\s+(.*)\\s\\s+(.*)$",
+                            "line": 1,
+                            "column": 2,
+                            "severity": 3,
+                            "message": 4,
+                            "code": 5
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
