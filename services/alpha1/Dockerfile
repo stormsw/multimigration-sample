@@ -16,6 +16,11 @@ ENV DEBUG_PORT=3000
 ARG CONF="config.ProductionConfig"
 
 ENV APP_SETTINGS="${CONF}"
+ARG DB_HOST=db
+ARG DB_USER=postgres
+ARG DB_PASS=secret
+ARG DB_NAME=app
+ENV DATABASE_URL="postgresql://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}"
 ENV FLASK_APP="alpha1.py"
 # This allows to start debugging in the docker
 ENTRYPOINT [ "/bin/sh","-c","python3 -m ptvsd --host 0.0.0.0 --port ${DEBUG_PORT} -m flask run --no-debugger --no-reload --port=${LISTEN_PORT} --host=0.0.0.0" ]
