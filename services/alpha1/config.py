@@ -5,10 +5,7 @@ class Config(object):
     DEBUG = False
     TESTING = False
     CSRF_ENABLED = True
-    SECRET_KEY = 'this-really-needs-to-be-changed'
-    PORT = 5000
-    HOST = '0.0.0.0'
-
+    SECRET_KEY = 'this-is-super-secret-to-be-changed'
 
 class ProductionConfig(Config):
     DEBUG = False
