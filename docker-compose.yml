@@ -2,18 +2,24 @@ version: '3.7'
 services:
   db:
     image: 'postgres:9.6.9'
-    ports: 
+    ports:
       - ${PG_PORT}:5432
     volumes:
         - pgdata:/var/lib/postgresql/data:rw
     environment:
         POSTGRES_USER: $PG_USER
         POSTGRES_PASSWORD: $PG_PASS
+  alpha1:
+    build:
+        context: services/alpha1
+    ports:
+        - 5000:5000
+        - 3000:3000
 
-volumes: 
+volumes:
     pgdata:
       driver: local
-      driver_opts: 
+      driver_opts:
         type: none
         device: $PWD/shared-volumes/pg
         o: bind
