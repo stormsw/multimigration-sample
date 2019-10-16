@@ -17,6 +17,21 @@
                     "remoteRoot": "." // automatically maps to the remote cwd where your app is running
                 }
             ],
+        },
+        {
+            "name": "Attach to Alpha2",
+            "type": "python",
+            "request": "attach",
+            "port": 3001,
+            "host": "localhost",
+            "preLaunchTask": "Start docker-compose",
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/services/alpha2",
+                    "remoteRoot": "." // automatically maps to the remote cwd where your app is running
+                }
+            ],
         }
+
     ]
 }

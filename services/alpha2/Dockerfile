@@ -1,5 +1,5 @@
 FROM python:3.6-alpine
-LABEL info="Example service Alpha1"
+LABEL info="Example service Alpha2"
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONIOENCODING=UTF-8
 
@@ -22,7 +22,7 @@ ARG DB_USER=postgres
 ARG DB_PASS=secret
 ARG DB_NAME=app
 ENV DATABASE_URL="postgresql://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}"
-ENV FLASK_APP="alpha1.py"
+ENV FLASK_APP="alpha2.py"
 # This allows to start debugging in the docker
 ENTRYPOINT [ "/bin/sh","-c","python3 -m ptvsd --host 0.0.0.0 --port ${DEBUG_PORT} -m flask run --no-debugger --no-reload --port=${LISTEN_PORT} --host=0.0.0.0" ]
 
