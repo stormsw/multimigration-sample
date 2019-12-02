@@ -12,3 +12,8 @@ use `pip3 install pipenv` to install on Debian/Ubuntu
 
 2. Start the environment using: `docker-compose start` from the rot folder.
 Note: you can change the DB port biding to whatever is free on your system in the `.env` file in the root - see PG_PORT parameter value.
+
+3. Apply migrations
+```sh
+alembic merge heads  && alembic upgrade heads
+```
